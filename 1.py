@@ -37,6 +37,28 @@ evoked_std = epochs['std'].average()
 
 #std.evoked = epochs[2].average()
 
+#%%
+
+dev=evoked_dev.data
+std=evoked_std.data
+time = evoked_dev.times
+
+dif = dev-std
+plt.plot(time,dif[0,:])
+#len(epochs.ch_names)
+
+mean_dev=np.mean(dev,0)
+mean_std=np.mean(std,0)
+
+plt.figure(figsize=(10,6))
+plt.subplot(211)
+plt.plot(time,dev.T)
+plt.subplot(212)
+plt.plot(time,std.T)
+
+#%%
+
+
 fig1 = plt.figure();
 evoked_dev = fig1.add_subplot(1, 2, 1)
 evoked_std = fig1.add_subplot(1, 2, 2)
